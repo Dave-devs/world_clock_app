@@ -9,15 +9,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  //Map data = {};
-  dynamic data; //Receive the data from loading screen here
+  Map data = { };
+  //dynamic data; //Receive the data from loading screen here
 
   @override
   Widget build(BuildContext context) {
 
     //Get arguments for routing
-    //data = ModalRoute.of(context).settings.arguments;
-    data = data.isNotEmpty ? data : ModalRoute.of(context)?.settings.arguments;
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
+    //data = data.isNotEmpty ? data : ModalRoute.of(context)?.settings.arguments;
     //Set background images/colors from the ternary operator in world_time.dart class.
     String bgImages = data['isDayTime'] ? 'day_image.jpg' : 'night_image.jpg';
     Color bgColors = (data['isDayTime'] ? Colors.blue : Colors.indigo);
