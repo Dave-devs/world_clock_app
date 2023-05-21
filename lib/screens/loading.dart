@@ -20,6 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void setTime() async {
     WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Berlin');
     await instance.getDateTime();
+    //Data to pass from loading screen after an await function to get data from network call in world time class.
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': instance.location,
       'flag': instance.flag,

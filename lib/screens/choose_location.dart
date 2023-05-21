@@ -10,6 +10,7 @@ class ChooseLocationScreen extends StatefulWidget {
 
 class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
 
+  //List of available places to get time for (more places could be added to your liking).
   List<WorldTime> locations = [
     WorldTime(flag: 'london.png', location: 'London', url: 'Europe/London'),
     WorldTime(flag: 'amsterdam.png', location: 'Amsterdam', url: 'Europe/Amsterdam'),

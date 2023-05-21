@@ -29,8 +29,8 @@ class WorldTime {
       now = now.add(Duration(hours: int.parse(offset)));
 
       //Set the time property
-      isDayTime = now.hour > 6 && now.hour < 19 ? true : false;
-      time = DateFormat.jm().format(now);
+      isDayTime = now.hour > 6 && now.hour < 19 ? true : false; //To determine weather day or night time
+      time = DateFormat.jm().format(now); //Local day time format
 
     } catch (e) {
       print('An error occurred!: $e');

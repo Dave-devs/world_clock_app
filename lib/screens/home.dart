@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   //Map data = {};
-  dynamic data;
+  dynamic data; //Receive the data from loading screen here
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //Get arguments for routing
     //data = ModalRoute.of(context).settings.arguments;
     data = data.isNotEmpty ? data : ModalRoute.of(context)?.settings.arguments;
-    //Set background images from the ternary operator in world_time.dart class.
+    //Set background images/colors from the ternary operator in world_time.dart class.
     String bgImages = data['isDayTime'] ? 'day_image.jpg' : 'night_image.jpg';
     Color bgColors = (data['isDayTime'] ? Colors.blue : Colors.indigo);
 
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
           child: Container(
             decoration: BoxDecoration(
-              image: DecorationImage(
+              image: DecorationImage( //To get background image in the scaffold
                   image: AssetImage('assets/$bgImages'),
                 fit: BoxFit.cover
               )
@@ -36,18 +36,21 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.fromLTRB(0.0, 120.0, 0.0, 0.0),
               child: Column(
                 children: [
-                  ElevatedButton.icon(
+                  TextButton.icon(
                       onPressed: () async {
                         //Map the new time from choose location to a result and update the state with setState() function.
                         dynamic result = await Navigator.pushNamed(context, '/location');
-                        setState(() {
-                          data = {
-                            'time': result['time'],
-                            'location': result['location'],
-                            'isDayTime': result['isDayTime'],
-                            'flag': result['flag']
-                          };
-                        });
+                        //This rebuild the widget and update the data accordingly.
+                        if(result != null) {
+                          setState(() {
+                            data = {
+                              'time': result['time'],
+                              'location': result['location'],
+                              'isDayTime': result['isDayTime'],
+                              'flag': result['flag']
+                            };
+                          });
+                        }
                       },
                       icon: const Icon(
                           Icons.edit_location,
